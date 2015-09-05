@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	team_login
+</head>
+<body>
+	<div style="margin:50px 50px 50px 50px;border:solid blue 5px;">
+	<form id="teamid" method="post" action="">
+		{% csrf_token %} 
+		
+		<p>username: <input type="text" name="name"></p>
+		<p>password: <input type="password" name="password"></p>
+		<p><input type="submit" name="submit"></input></p>
+
+		{% if error %}
+		<p>{{ error }}</p>
+		{% endif %}
+	
+	</form>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><p style="color:blue;font-family:verdana;"><em><b>Register over here !!!! </b></em></p></head>
+
+<body>
+
+	<div style="margin:50px 50px 50px 50px;border:solid blue 5px;">
+	
+	
+	<form id="team" method="post" action="">
+		 {% csrf_token %}
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field.name }} {{ field }} <br/>
+             {% endfor %}	
+
+        <input type="submit" name="submit" value="REGISTER">
+        </form>
+        
+        </div>    
+</body>
+</html>

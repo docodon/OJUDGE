@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>  <p><b>start contest</b></p> </head>
+
+<body>
+
+	<div style="margin:150px 150px 150px 150px;border:solid blue 1px;">
+
+	<form id="set_time" method="post" action=""  >
+
+		{% csrf_token %}	
+		<p>start date : <input type="date" name="sdate"></p>
+		<p>start time :  <input type="time" name="stime"></p>
+		<p>end date :  <input type="date" name="edate"></p>
+		<p>end time : <input type="time" name="etime"></p>
+		
+	<input type="submit" name="submit" value="ADD_TIMER">
+
+	</form>
+
+	{% if errors %}
+	<p>{{ errors }}</p>
+	{% endif %}	
+
+
+</body>
+
+</html>

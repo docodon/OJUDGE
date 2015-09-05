@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><p style="margin-top:100px;margin-left:100px;">admin login !!!</p></head>
+<body>
+
+	<div style="margin:50px 50px 50px 50px;border:solid blue 5px;">
+	<form id="user" method="post" action="">
+		{% csrf_token %} 
+		
+		<p>username: <input type="text" name="name"></p>
+		<p>password: <input type="password" name="password"></p>
+		<p><input type="submit" name="submit"></input></p>
+
+		{% if error %}
+		<p>{{ error }}</p>
+		{% endif %}
+</body>
+</html>

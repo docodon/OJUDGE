@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+		<p><a href="/setup/add_prob">add_problems</a></p>
+		<p><a href="/setup/add_cases">add_testcases</a></p>
+
+		{% if user.is_authenticated %}
+		<p><a href="/setup/logout">logout</a></p>
+		<p><a href="/setup/start_contest">start_contest</a></p>
+	
+		{% else %}
+		<p><a href="/setup/login">staff_login</a></p>
+		{% endif %}
+
+
+	{% if success %}
+	<p>{{ success }}</p>
+	{% endif %}
+</body>
+</html>

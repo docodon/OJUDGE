@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+{% load staticfiles %}
+
+<head></head>
+<body>
+
+	<div style="margin:150px 150px 150px 150px;border:solid blue 1px;">
+	<form enctype="multipart/form-data" id="problem" method="post" action=""  >
+		{% csrf_token %}
+		{% for field in form.visible_fields %}
+		<p>{{ field.errors }}
+		{{ field.help_text }}
+		{{ field.name }}&nbsp;&nbsp;&nbsp;&nbsp;{{ field }} <br/>
+		</p>
+	{% endfor %}
+	<input type="submit" name="submit" value="ADD_PROBLEM">
+
+	</form>
+	</div>
+
+
+	{% if errors %}
+	<p>{{ errors }}</p>
+	{% endif %}
+	
+</body>
+</html>
