@@ -77,13 +77,13 @@ def contest_live(request):
 @login_required(login_url='/contest/login_team')
 def probstate(request,pname) :
 	if not ch_time() :
-		print '00000000000000000000000000000000000000000000000000000000000000'
+		
 		return redirect('contest_live')
 
 
 	url='https://ideone.com/api/1/service.wsdl'
-	user='docodon'
-	key='ju#4567'
+	user=''
+	key=''
 	imp = Import('http://schemas.xmlsoap.org/soap/encoding/')  #simply cut-paste but i think it solves the namespace sort of issues   
 	imp.filter.add('http://ideone.com/api/1/service')          #https://fedorahosted.org/suds/ticket/220  (last comment)
 	d = ImportDoctor(imp)                                      #without this was not able to fetch from api
