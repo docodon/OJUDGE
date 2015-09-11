@@ -1,21 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head></head>
-<body>
-		<p><a href="/setup/add_prob">add_problems</a></p>
-		<p><a href="/setup/add_cases">add_testcases</a></p>
+{% extends 'base.html' %}
+{% block body_block %}
 
-		{% if user.is_authenticated %}
-		<p><a href="/setup/logout">logout</a></p>
-		<p><a href="/setup/start_contest">start_contest</a></p>
+<div id="one" style="color:black;">
+
+<p style="color:black;">
+
+	<p><a href="/setup/add_prob" style="color:black;">add_problems</a></p>
+		<p><a href="/setup/add_cases" style="color:black;">add_testcases</a></p>
+
+			{% if user.is_authenticated %}
+				<p><a href="/setup/logout" style="color:black;">logout</a></p>
+				<p><a href="/setup/start_contest" style="color:black;">start_contest</a></p>
 	
-		{% else %}
-		<p><a href="/setup/login">staff_login</a></p>
-		{% endif %}
+				{% else %}
+				<p><a href="/setup/login" style="color:black;">staff_login</a></p>
+				{% endif %}
 
 
-	{% if success %}
-	<p>{{ success }}</p>
-	{% endif %}
-</body>
-</html>
+				{% if success %}
+				<p style="color:blue;">{{ success }}</p>
+				{% endif %}
+
+</p>
+</div>
+{% endblock %}
+
+
+

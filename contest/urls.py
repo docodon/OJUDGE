@@ -7,6 +7,8 @@ urlpatterns=patterns(' ',
 	url(r'^$',views.contest_live,name='contest_live'),
 	url(r'^login_team/$',views.login_team,name='login_team'),
 	url(r'^problem/(?P<pname>.*)/$',views.probstate,name='problems'),
+	url(r'^logout/$',views.logout_view,name='logout_view'),
+	url(r'^rankings/$',views.rankings,name='rankings'),
 )
 
 

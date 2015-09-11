@@ -1,28 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>  <p><b>start contest</b></p> </head>
+{% extends 'base.html' %}
+{% block body_block %}
+	
+	<div style="margin:50px 50px 50px 50px;border:solid blue 1px;">
 
-<body>
+		<p style="color:black;"><b>start contest</b></p> 
 
-	<div style="margin:150px 150px 150px 150px;border:solid blue 1px;">
-
-	<form id="set_time" method="post" action=""  >
-
-		{% csrf_token %}	
-		<p>start date : <input type="date" name="sdate"></p>
-		<p>start time :  <input type="time" name="stime"></p>
-		<p>end date :  <input type="date" name="edate"></p>
-		<p>end time : <input type="time" name="etime"></p>
+		<form id="set_time" method="post" action="" >
+			{% csrf_token %}	
+				<p style="color:black;">start date : <input type="date" name="sdate"></p>
+				<p style="color:black;">start time :  <input type="time" name="stime"></p>
+				<p style="color:black;">end date :  <input type="date" name="edate"></p>
+				<p style="color:black;">end time : <input type="time" name="etime"></p>
 		
-	<input type="submit" name="submit" value="ADD_TIMER">
+			<input type="submit" name="submit" value="ADD_TIMER">
 
-	</form>
+		</form>
 
-	{% if errors %}
-	<p>{{ errors }}</p>
-	{% endif %}	
+		{% if errors %}
+			<p style="color:blue;">{{ errors }}</p>
+		{% endif %}	
+
+	</div>
 
 
-</body>
+{% endblock %}
 
-</html>

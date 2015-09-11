@@ -15,3 +15,11 @@ class testcases(models.Model):
 
 	def __str__(self):
 		return self.pcode
+
+
+class timer(models.Model):
+	stime=models.DateTimeField()
+	etime=models.DateTimeField()
+
+	def __str__(self):
+		return str(self.stime)

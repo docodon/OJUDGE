@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block body_block %}
+
+<div id="rightone">
+	
+		<p style="color:black;"><b>{{ problem.pcode }}</b></p>
+	
+	
+		<br>
+		<p style="color:black;">
+			{{ problem.pdesc }}	
+		</p>
+
+	
+	<form method="POST" id="submission" action="">
+		{% csrf_token %} 
+		 <p style="color:blue;"><em>select language :</em><br>
+    
+           <select name="lang" > 
+ 	      		{% for i in lang %}
+        		    <option value="{{ i.key }}">{{ i.value }}</option> 
+	     		{% endfor %}	
+		</select>
+	
+		</p>
+
+		<p style="color:blue;"><em>Paste your code over here</em> </p>
+			<textarea cols="150" name="code" rows="10" name="code" style="margin-left:30px;"></textarea>
+		<br><br>
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		
+		<input type="submit" value="Submit your code">
+		  
+
+	</form>
+
+
+</div>
+
+{% endblock %}

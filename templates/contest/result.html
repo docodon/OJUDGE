@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body_block %}
+	
+	<p><a href="{% url 'contest_live' %}" style="color:blue; margin:50px 150px 150px;" >Problems page</a></p>
+	<p><a href="{% url 'rankings' %}" style="color:blue; margin:55px 150px 150px 150px;" >Rankings</a></p>
+	
+	<div id="result" style="margin:150px 150px 150px 150px;border:1px solid blue;align:center;">
+			<h3 style="color:{{ color }};text-align:center;"><b><em>{{ success }}</em></b></h3>
+	</div>
+
+
+{% endblock %}

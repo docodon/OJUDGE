@@ -1,11 +1,76 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html>
 <head>
-	CONTEST_IS_LIVE
+	<link rel="stylesheet" href="{% static "css/build.css" %}" />
+
+	<script> 
+	var seconds = {{ time_left }};
+	function timerr()
+	{
+		if(seconds > 0) 
+		{	
+			hours=Math.floor(seconds/3600);
+			minutes=Math.floor((seconds-hours*3600)/60);
+			second=seconds-hours*3600-minutes*60;
+			document.getElementById("tim").innerHTML = hours+"[ Hours ]"+minutes+"[ Minutes ]"+second+"[Seconds ]";
+			seconds--;
+		}
+		else
+		{
+			window.location.replace("/contest/");
+		}
+	}
+	var recur = setInterval(function(){timerr()},1000);
+	</script>
+
+
 </head>
-<body>
-	{% for i in list %}
-	<a href="/contest/problem/{{i}}">{{ i }}</a>
-	{% endfor %}
+
+<body onload="timerr()">
+
+	<div id="header">
+			<p><b> OJUDGE </b> </p>
+			<ul>
+				{% if user.is_authenticated %}
+					<li><a href="{% url 'logout_reg' %}">Logout {{ user.get_username  }}</a></li>		
+					<li><a href="{% url 'contest_live' %}">Contest</a> </li>
+				{% else %}
+					<li><a href="{% url 'login_team' %}">Login</a></li>
+					<li><a href="{% url 'register' %}">Register</a></li>
+				{% endif %}
+			
+			</ul>
+	</div>
+
+
+<div class="right">
+		<div class="inside" style="margin:55px 5px 5px 25px;" >
+		<br><br><br><br>	
+		
+		<p style="font-family:verdana;color:blue;font-size:20px;"><em><b>PROBLEM SET</b></em></p>	
+		
+		{% if time_message %}
+			<p style="color:black;">{{ time_message }}</p>
+		{% else %}
+			<div id="tim" style="float:right;border:solid blue 5px;">
+			</div>
+		{% endif %}
+
+	
+		<ul>
+		{% for i in list %}
+			<li style="color:blue;"><a href="/contest/problem/{{i}}" style="color:blue;">{{ i }}</a></li>
+		{% endfor %}
+		</ul>
+		</div>
+
+</div>
+
+	<div id="footer">
+		<p><a target="_tab" href="https://www.facebook.com/dhruv.sharma.756412"> Made by dhruvsharma </a></p>
+	</div>
+
 </body>
+
 </html>

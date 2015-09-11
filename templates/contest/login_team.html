@@ -1,23 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-	team_login
-</head>
-<body>
-	<div style="margin:50px 50px 50px 50px;border:solid blue 5px;">
-	<form id="teamid" method="post" action="">
-		{% csrf_token %} 
-		
-		<p>username: <input type="text" name="name"></p>
-		<p>password: <input type="password" name="password"></p>
-		<p><input type="submit" name="submit"></input></p>
+{% extends 'base.html' %}
+{% block body_block %}
 
-		{% if error %}
-		<p>{{ error }}</p>
-		{% endif %}
+
+<div style="margin:50px 50px 50px 50px;border:solid blue 5px;">
+
+		<p style="color:black;"><b>team_login</b></p>
+
+		<form id="teamid" method="post" action="">
+			{% csrf_token %} 
+		
+			<p style="color:black;">username: <input type="text" name="name"></p>
+			<p style="color:black;">password: <input type="password" name="password"></p>
+			<p style="color:black;"><input type="submit" name="submit"></input></p>
+
+			{% if error %}
+				<p style="color:blue;">{{ error }}</p>
+			{% endif %}
 	
 	</form>
-	</div>
-
-</body>
-</html>
+</div>
+{% endblock %}

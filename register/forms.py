@@ -6,6 +6,7 @@ class team(forms.ModelForm) :
 	class Meta:
 		model=team
 		fields=['name','member1','member2','member3','password']
+		exclude=['user']
 		widgets={
 			'password':forms.PasswordInput(),
 		}

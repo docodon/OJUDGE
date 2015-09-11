@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block body_block %}
+	
+	<a href="{% url 'contest_live' %}" style="color:blue;margin:50px 50px 50px 50px;"><b>Problem set</b></a>
+	
+	
+	<div id="ranks" style="margin:50px 50px 50px 50px;border:blue solid 2px;height:300px;">
+	<table style="width:100%;text-align:center;">
+	<thead>
+		<tr><th>RANK</th><th>TEAM</th><th>ACs</th><th>LAST AC</th>
+		</tr>
+	</thead> 	
+			{% for i,j in list.items %}
+				<tr><td>{{ i }}</td><td>{{ j.tname }}</td><td>{{ j.acs }}</td><td>{{ j.time }}</tr>
+			{% endfor %}
+		</table>
+
+	</div>
+
+{% endblock %}

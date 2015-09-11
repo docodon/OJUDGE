@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head></head>
-
-<body>
-	<p> home</p>
-
-	<a href="/home/register/">register your self</a>
-
-{% if success %}
-<p>you have registered successfully </p>
-{% endif %}
+{% extends 'base.html' %}
 
 
-</body>
-</html>
+{% block body_block %}
+
+<br><br><br><br>
+
+		{% if success %}
+			<p style="color:blue;"><b>{{ success }}</b></p>
+		{% endif %}
+
+
+{% endblock %}

@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from forms import problems,testcases
 from django.contrib.auth.decorators import user_passes_test,login_required
 from datetime import datetime
-
+from models import timer
 # Create your views here.
 
 def admin_portal(request):                   #first page for login....
@@ -20,11 +20,11 @@ def login_user(request) :
 	if request.method=='POST':		
 		user=authenticate(username=request.POST['name'],password=request.POST['password'])
 		if user is not None:
-			if user.is_active and user.is_superuser and user.is_staff :
+			if user.is_superuser and user.is_staff :
 				login(request,user)
-				return render(request,'pset/admin_portal.html',{'success':request.POST['name']+'logged in succesfully'})
+				return render(request,'pset/admin_portal.html',{'success':request.POST['name']+' logged in succesfully'})
 		else :
-			return render(request,'pset/login.html',{'error':1})		
+			return render(request,'pset/login.html',{'error':'user not authenticated !!!!'})		
 	return render(request,'pset/login.html',{})
 
 
@@ -34,9 +34,9 @@ def add_problems(request):
 		form=problems(request.POST)
 		if form.is_valid() :
 			form.save() 
-			return render(request,'pset/admin_portal.html',{'success':request.POST['pcode']+'added succesfully'})
+			return render(request,'pset/admin_portal.html',{'success':request.POST['pcode']+' added succesfully'})
 		else:
-			return render(request,'pset/add_problems.html',{'form':problems(),'errors':'problem not validated'})	
+			return render(request,'pset/add_problems.html',{'form':problems(),'errors':'problem not validated !!!'})	
 	else:
 		return render(request,'pset/add_problems.html',{'form':problems()})
 
@@ -63,11 +63,17 @@ def start_contest(request) :
 		et=str(request.POST['edate']) + ' - ' + str(request.POST['etime'])   #string with end_time
 		stime=datetime.strptime(st,'%Y-%m-%d - %H:%M')
 		etime=datetime.strptime(et,'%Y-%m-%d - %H:%M')
+	
 		if stime>etime :
 			return render(request,'pset/start_contest.html',{'errors':'start time is greater than end time !!! '})
 		
-		request.session['cnt_stime']=stime;
-		request.session['cnt_etime']=etime;
+		timer.objects.all().delete()
+
+		a=timer(stime=stime,etime=etime)
+
+		a.save()
+		#request.session['cnt_stime']=stime;
+		#request.session['cnt_etime']=etime;
 		
 		return render(request,'pset/admin_portal.html',{'success':'contest time set  : '+str(stime)+' to '+str(etime) } )
 	else :

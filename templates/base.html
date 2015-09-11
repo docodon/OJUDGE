@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+<head>
+	<link rel="stylesheet" href="{% static "css/build.css" %}" />
+</head>
+
+<body>
+	
+	<div id="header">
+			<p><b> OJUDGE </b> </p>
+			<ul>
+				{% if user.is_authenticated %}
+					<li><a href="{% url 'logout_reg' %}">Logout {{ user.get_username  }}</a></li>		
+					<li><a href="{% url 'contest_live' %}">Contest</a> </li>
+				{% else %}
+					<li><a href="{% url 'login_team' %}">Login</a></li>
+					<li><a href="{% url 'register' %}">Register</a></li>
+				{% endif %}
+			</ul>
+	</div>
+
+	<div class="right">
+		<br><br><br><br>
+	
+		{% block body_block %}{% endblock %}
+
+	</div>
+	
+
+
+	<div id="footer">
+	<p><a target="_tab" href="https://www.facebook.com/dhruv.sharma.756412"> Made by dhruvsharma </a></p>
+	</div>
+
+</body>
+</html>
