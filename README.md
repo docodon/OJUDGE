@@ -33,10 +33,12 @@ Models/Tables :
     - testcases - [ pcode , inp , out ] -> [ problem_code , input_file , output_file ]
     - timer     - [ stime , etime ]   -> [ start_time_of_contest , end_time_of_contest ]
  
- 2) REGISTER : 
+ 2) REGISTER:
+ 
     - team - [ user , name , member1 , member2 , member3 , password ] -> [ team_handle(for login) , team_handle(for login) , name_member1 , name_member2 , name_member3 , password_for_login ]
  
  3) CONTEST :
+ 
     - teamr - [ tname , acs , time ] -> [ team_handle , number_of_ACcepted_solutions , total_time_for_all_ACs ]
     - accepted - [ pcode , tname , code ] -> [ problem_code , team_name , source_code_submitted ]    
 
