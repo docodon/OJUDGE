@@ -45,6 +45,6 @@ Models/Tables :
 PLEASE SEE : 
 
 SINCE IDEONE API is used in this project : 
-One needs to have ideone username and ideone api password . ( Its free , once you having account at :  http://ideone.com/)
+One needs to have ideone username and ideone api password . ( Its free , once you have account at :  http://ideone.com/)
 
 And PUT YOUR CREDENTIALS AT /contest/views.py line 85 and 86 .
