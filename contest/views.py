@@ -9,6 +9,7 @@ from pset.models import timer
 import datetime
 from django.utils import timezone
 from django.core.urlresolvers import reverse
+import logging
 
 #ideone-----------------------------------------------------------------------------------------
 
@@ -23,8 +24,13 @@ from time import sleep
 # Create your views here.
 
 def login_team(request) :
+
+	logging.debug("atleast here");
+	print 'jereer';
 	if request.method=='POST':
+		logging.debug('erere');
 		usr=authenticate(username=request.POST['name'],password=request.POST['password'])
+		print usr
 		if usr is not None :
 			login(request,usr)
 			try :
@@ -32,9 +38,9 @@ def login_team(request) :
 			except:
 				teamin=teamr(tname=request.POST['name'],acs=0,time=datetime.datetime.now())
 				teamin.save()
-							
-			return redirect('contest_live')	
+				return redirect('contest_live')	
 		else :
+			print 'hell yeah !!'
 			return render(request,'contest/login_team.html',{'errors':'Team not recognized kindly fill your details again !!!'})
 	
 	else :

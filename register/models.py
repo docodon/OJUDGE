@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class team(models.Model) :
-	user = models.OneToOneField(User)
+	user = models.OneToOneField(User,null=True);
 	name=models.CharField(max_length=50,unique=True) ;
 	member1=models.CharField(max_length=100) ;
 	member2=models.CharField(max_length=100) ;
